@@ -57,9 +57,6 @@ LEDs:
 Buzzer:
 - Positive → GP19
 - Negative → GND
-```
-
-*Note: Include actual Fritzing diagram image here*
 
 ## Software Architecture
 
@@ -73,7 +70,7 @@ Buzzer:
   - `urequests` - HTTP requests (optional for external APIs)
 
 ### Code Structure
-```
+
 smart-dustbin/
 │
 ├── main.py                 # Main program loop
