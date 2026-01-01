@@ -4,12 +4,11 @@ from machine import Pin
 import time
 import network
 import config
-from sensors import init_sensors, get_distance, calculate_fill_percentage
-from actuators import ServoController, LEDController, BuzzerController
-from web_server import WebServer
-from notifications import NotificationManager
+from sensor import init_sensors, get_distance, calculate_fill_percentage
+from actuator import ServoController, LEDController, BuzzerController
+from webserver import WebServer
+from notification import NotificationManager
 
-# Global statistics
 lid_openings = 0
 last_lid_open_time = 0
 
@@ -79,7 +78,6 @@ def main():
             
             if lid_distance > 0 and lid_distance < config.LID_TRIGGER_DISTANCE:
                 current_time = time.time()
-                # Prevent multiple triggers in short time
                 if current_time - last_lid_open_time > 2:
                     servo.open_lid()
                     lid_openings += 1
@@ -104,13 +102,13 @@ def main():
                 web_server.update_stats(fill_percentage, lid_openings, status)
                 web_server.handle_request()
             
-            time.sleep(0.1)
+            time.sleep(0.5)
             
         except KeyboardInterrupt:
             print("\nShutting down...")
             servo.close_lid()
             leds.all_off()
-            buzzer.buzzer.off()
+            buzzer.off()
             break
         except Exception as e:
             print(f"Error: {e}")
