@@ -111,8 +111,8 @@ smart-dustbin/
 - Clone this repository or download the project files
 - Edit `config.py` and add your WiFi credentials:
 ```python
-WIFI_SSID = "YourNetworkName"
-WIFI_PASSWORD = "YourPassword"
+WIFI_SSID = "SheykonieRPW"
+WIFI_PASSWORD = "s3k0n1"
 BIN_HEIGHT = 40  # Height of bin in cm
 ```
 
